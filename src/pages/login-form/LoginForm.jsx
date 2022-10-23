@@ -1,9 +1,33 @@
-import React from "react";
-
+import React, { useState } from "react";
+import validator from 'validator';
 function LoginForm() {
+
+  const [signupInput, setSignupInput] = useState({
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const [error, setError] = useState('');
+
+
+  const handleChange = (e) => {
+    setSignupInput({
+      ...signupInput,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validator.isEmail(signupInput.email)) {
+      setError('The email you input is invalid')
+    }
+
+  }
   return (
     <div className="container my-5">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email address
@@ -13,6 +37,8 @@ function LoginForm() {
             id="email"
             name="email"
             className="form-control"
+            value={signupInput.email}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3">
@@ -24,6 +50,8 @@ function LoginForm() {
             id="password"
             name="password"
             className="form-control"
+            value={signupInput.password}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3">
@@ -33,10 +61,18 @@ function LoginForm() {
           <input
             type="password"
             id="conform-password"
-            name="conform-password"
+            name="confirmPassword"
             className="form-control"
+            value={signupInput.confirmPassword}
+            onChange={handleChange}
           />
         </div>
+        {
+          error && <p className="text-danger">{error}</p>
+        }
+        <button type="submit" className="btn btn-primary">
+          submit
+        </button>
       </form>
     </div>
   );
