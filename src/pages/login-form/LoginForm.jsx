@@ -22,6 +22,11 @@ function LoginForm() {
     e.preventDefault();
     if (!validator.isEmail(signupInput.email)) {
       setError('The email you input is invalid')
+    } else if(signupInput.password.length < 5){
+      setError('The password you entre should contain 5 or more characters')
+    }
+    else if(signupInput.password !== signupInput.confirmPassword){
+      setError('The passwords do not match. try again')
     }
 
   }
