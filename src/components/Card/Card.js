@@ -11,7 +11,7 @@ function Card({ name, phone, email, image, favoured }) {
     }
 
     return (
-        <div className='card'>
+        <article className='card'>
             <div className='card-header'>
                 <img src={image.url} alt={image.alt} className='card-image' />
                 <button className='heart' onClick={toggleFavoured}>
@@ -27,7 +27,7 @@ function Card({ name, phone, email, image, favoured }) {
                 <p>{email}</p>
             </div>
 
-        </div>
+        </article>
     )
 }
 
