@@ -72,6 +72,8 @@ describe('Card Component', () => {
         userEvent.click(screen.getByRole('button'));
         expect(screen.queryByAltText(/outlined heart/i)).not.toBeInTheDocument();
         expect(screen.getByAltText(/filled heart/i)).toBeInTheDocument();
-
+        userEvent.click(screen.getByRole('button'));
+        expect(screen.getByAltText(/outlined heart/i)).toBeInTheDocument();
+        expect(screen.queryByAltText(/filled heart/i)).not.toBeInTheDocument();
     })
 })

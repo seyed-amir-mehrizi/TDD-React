@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import heartFilled from '../../svgs/heartFilled.svg';
 import heartOutlined from '../../svgs/heartOutlined.svg';
-
+import './Card.css'
 function Card({ name, phone, email, image, favoured }) {
 
     const [isFavoured, setIsFavoured] = useState(favoured);
 
     const toggleFavoured = () => {
-        setIsFavoured(!favoured)
+        setIsFavoured(!isFavoured)
     }
 
     return (
