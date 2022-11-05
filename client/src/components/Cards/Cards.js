@@ -5,7 +5,7 @@ import './Cards.css';
 function Cards({ cats }) {
     return (
         <div className='pet-cards-container'>
-            {cats.map((cat) => {
+            {cats && cats.map((cat) => {
                 return <Card
                     key={cat.id}
                     name={cat.name}
